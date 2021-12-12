@@ -7330,7 +7330,7 @@ namespace Catch {
                     getResultCapture().benchmarkStarting(info);
 
                     auto samples = user_code([&] {
-                        return plan.template run<Clock>(*cfg, env);
+                        return plan.run<Clock>(*cfg, env);
                     });
 
                     auto analysis = Detail::analyse(*cfg, env, samples.begin(), samples.end());

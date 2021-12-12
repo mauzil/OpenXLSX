@@ -436,7 +436,7 @@ public:
             if (aref && (!need_writeable || aref.writeable())) {
                 fits = props::conformable(aref);
                 if (!fits) return false; // Incompatible dimensions
-                if (!fits.template stride_compatible<props>())
+                if (!fits.stride_compatible<props>())
                     need_copy = true;
                 else
                     copy_or_ref = std::move(aref);
@@ -455,7 +455,7 @@ public:
             Array copy = Array::ensure(src);
             if (!copy) return false;
             fits = props::conformable(copy);
-            if (!fits || !fits.template stride_compatible<props>())
+            if (!fits || !fits.stride_compatible<props>())
                 return false;
             copy_or_ref = std::move(copy);
             loader_life_support::add_patient(copy_or_ref);

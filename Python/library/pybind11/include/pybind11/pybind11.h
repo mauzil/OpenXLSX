@@ -157,7 +157,7 @@ protected:
 
             /* Perform the function call */
             handle result = cast_out::cast(
-                std::move(args_converter).template call<Return, Guard>(cap->f), policy, call.parent);
+                std::move(args_converter).call<Return, Guard>(cap->f), policy, call.parent);
 
             /* Invoke call policy post-call hook */
             process_attributes<Extra...>::postcall(call, result);

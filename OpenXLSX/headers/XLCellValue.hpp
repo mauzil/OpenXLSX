@@ -364,16 +364,16 @@ namespace OpenXLSX
             if constexpr (std::is_same_v<T, XLCellValue>) {
                 switch (value.type()) {
                     case XLValueType::Boolean:
-                        setBoolean(value.template get<bool>());
+                        setBoolean(value.get<bool>());
                         break;
                     case XLValueType::Integer:
-                        setInteger(value.template get<int64_t>());
+                        setInteger(value.get<int64_t>());
                         break;
                     case XLValueType::Float:
-                        setFloat(value.template get<double>());
+                        setFloat(value.get<double>());
                         break;
                     case XLValueType::String:
-                        setString(value.template get<const char*>());
+                        setString(value.get<const char*>());
                         break;
                     case XLValueType::Empty:
                         clear();

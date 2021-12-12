@@ -506,7 +506,7 @@ public:
 
     operator object() const { return get_cache(); }
     PyObject *ptr() const { return get_cache().ptr(); }
-    template <typename T> T cast() const { return get_cache().template cast<T>(); }
+    template <typename T> T cast() const { return get_cache().cast<T>(); }
 
 private:
     object &get_cache() const {
@@ -1418,7 +1418,7 @@ template <typename D> args_proxy object_api<D>::operator*() const {
     return args_proxy(derived().ptr());
 }
 template <typename D> template <typename T> bool object_api<D>::contains(T &&item) const {
-    return attr("__contains__")(std::forward<T>(item)).template cast<bool>();
+    return attr("__contains__")(std::forward<T>(item)).cast<bool>();
 }
 
 template <typename D>

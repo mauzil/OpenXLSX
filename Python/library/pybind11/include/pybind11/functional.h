@@ -73,7 +73,7 @@ public:
                 gil_scoped_acquire acq;
                 object retval(hfunc.f(std::forward<Args>(args)...));
                 /* Visual studio 2015 parser issue: need parentheses around this expression */
-                return (retval.template cast<Return>());
+                return (retval.cast<Return>());
             }
         };
 
@@ -86,7 +86,7 @@ public:
         if (!f_)
             return none().inc_ref();
 
-        auto result = f_.template target<function_type>();
+        auto result = f_.target<function_type>();
         if (result)
             return cpp_function(*result, policy).release();
         else
